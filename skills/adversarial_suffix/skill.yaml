@@ -1,0 +1,8 @@
+id: adversarial_suffix
+name: Adversarial suffixes and character noise
+category: adversarial_suffix
+severity: medium
+description: A restricted request followed by GCG-style suffixes (one published example, attributed), seeded random noise and affirmative-prefix priming. Suffixes are short/truncated for cost.
+models: ["*"]
+tags: [adversarial, gcg, noise]
+references: ["Zou et al., 2023 — Universal and Transferable Adversarial Attacks on Aligned Language Models (arXiv:2307.15043)"]

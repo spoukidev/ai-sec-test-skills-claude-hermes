@@ -1,0 +1,55 @@
+[build-system]
+requires = ["hatchling==1.33.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "aisec-test-skills"
+version = "0.1.0"
+description = "Modular, defensive security test skills for evaluating Claude and Hermes (OpenAI-compatible) models against prompt injection, jailbreaks, leakage and exfiltration."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "aisec-test-skills contributors" }]
+keywords = ["ai-security", "llm", "prompt-injection", "jailbreak", "red-teaming", "evaluation", "claude", "hermes"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "License :: OSI Approved :: MIT License",
+  "Topic :: Security",
+  "Intended Audience :: Science/Research",
+  "Intended Audience :: Education",
+]
+dependencies = [
+  "anthropic==2.5.0",
+  "openai==3.46.0",
+  "pydantic==2.14.3",
+  "pyyaml==6.0.3",
+  "jinja2==3.1.6",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest==9.2.0",
+  "ruff==0.17.3",
+]
+
+[project.scripts]
+aisec = "aisec.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["aisec"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 110
+target-version = "py311"
+extend-exclude = [".venv", "results"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP"]
+ignore = ["E501"]

@@ -1,0 +1,32 @@
+# Secrets — never commit
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Run outputs (keep the committed sample)
+results/*
+!results/sample/
+!results/sample/**
+!results/.gitkeep
+
+# OS / editors
+.DS_Store
+.idea/
+.vscode/
+*.swp

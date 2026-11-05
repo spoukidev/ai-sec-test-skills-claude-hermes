@@ -1,0 +1,60 @@
+# Named evaluation targets.
+#
+# SECURITY: never put API keys here. Each target only *names* the environment variables
+# that hold the key / model id / base URL. See .env.example.
+#
+# `mock_profile` is used ONLY with `aisec run --mock` (offline demo / CI). Its rates are
+# arbitrary synthetic knobs and say nothing about the real models.
+
+targets:
+  claude:
+    provider: anthropic
+    description: Claude via the Anthropic Messages API
+    model: claude-sonnet-4-20250514                 # default; override with env var below
+    model_env: [AISSEC_CLAUDE_MODEL, AISEC_CLAUDE_MODEL]
+    api_key_env: [ANTHROPIC_API_KEY]
+    base_url_env: [ANTHROPIC_BASE_URL]
+    max_tokens: 512
+    requests_per_minute: 30
+    params: {}                                       # passed straight to messages.create
+    price_input_per_mtok: 3.0                        # USD, for the cost estimate only; check current pricing
+    price_output_per_mtok: 15.0
+    mock_profile: {comply_rate: 0.08, vague_rate: 0.07, overrefusal_rate: 0.10, seed: 1337}
+
+  hermes:
+    provider: openai_compat
+    description: Nous Research Hermes via an OpenAI-compatible endpoint (OpenRouter by default)
+    model: nousresearch/hermes-3-llama-3.1-70b
+    model_env: [AISSEC_HERMES_MODEL, AISEC_HERMES_MODEL]
+    api_key_env: [OPENAI_API_KEY, OPENROUTER_API_KEY]
+    base_url: https://openrouter.ai/api/v1
+    base_url_env: [OPENAI_BASE_URL]
+    max_tokens: 512
+    requests_per_minute: 30
+    params: {temperature: 0}
+    price_input_per_mtok: 0.0                        # set to your provider's price if you want cost estimates
+    price_output_per_mtok: 0.0
+    mock_profile: {comply_rate: 0.35, vague_rate: 0.10, overrefusal_rate: 0.03, seed: 1337}
+
+  hermes-local:
+    provider: openai_compat
+    description: Hermes 3 on a local Ollama server (ollama pull hermes3)
+    model: hermes3
+    model_env: [AISSEC_HERMES_LOCAL_MODEL]
+    api_key_env: [AISSEC_LOCAL_API_KEY, OPENAI_API_KEY]   # Ollama ignores the value but the SDK needs one
+    base_url: http://localhost:11434/v1
+    base_url_env: [AISSEC_LOCAL_BASE_URL]
+    max_tokens: 512
+    requests_per_minute: 120
+    params: {temperature: 0}
+    supports_tools: true
+
+  custom:
+    provider: openai_compat
+    description: Any other OpenAI-compatible endpoint (Together, Fireworks, vLLM, ...)
+    model: ""
+    model_env: [AISSEC_CUSTOM_MODEL]
+    api_key_env: [AISSEC_CUSTOM_API_KEY]
+    base_url_env: [AISSEC_CUSTOM_BASE_URL]
+    max_tokens: 512
+    requests_per_minute: 30

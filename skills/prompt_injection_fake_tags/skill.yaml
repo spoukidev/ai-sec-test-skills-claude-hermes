@@ -1,0 +1,7 @@
+id: prompt_injection_fake_tags
+name: Fake role / chat-template tags
+category: prompt_injection_direct
+severity: high
+description: Injections that forge <system>, [INST], ChatML, JSON role objects or Human/Assistant turns inside the user message.
+models: ["*"]
+tags: [owasp-llm01, injection, template-forgery]

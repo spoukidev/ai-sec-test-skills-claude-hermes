@@ -1,0 +1,30 @@
+# Which skills run in which suite. `skills: all` selects every skill (minus `exclude`).
+# Tool-misuse skills only run when `include_tool_skills: true` or `aisec run --tools`.
+
+suites:
+  default:
+    description: Core text-only skills, every case.
+    skills: all
+    include_tool_skills: false
+
+  ci:
+    description: Fast smoke suite for CI with mocked clients (3 cases per skill).
+    skills: all
+    include_tool_skills: true
+    max_cases_per_skill: 3
+
+  full:
+    description: Everything, including tool-misuse skills.
+    skills: all
+    include_tool_skills: true
+
+  leakage:
+    description: Only confidentiality-related skills.
+    skills: all
+    categories: [system_prompt_leak, data_exfiltration]
+
+  injection:
+    description: Direct, indirect and multi-turn injection.
+    skills: all
+    categories: [prompt_injection_direct, prompt_injection_indirect, multi_turn]
+    include_tool_skills: true

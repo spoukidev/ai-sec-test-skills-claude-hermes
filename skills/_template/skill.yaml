@@ -1,0 +1,11 @@
+# Copy this folder to skills/<your_skill_id>/ and edit. `id` MUST equal the folder name.
+id: _template
+name: Template skill
+category: prompt_injection_direct   # one of the categories in aisec/schema.py (SkillMeta.category)
+severity: medium                     # low | medium | high | critical
+description: One sentence on what this skill measures.
+models: ["*"]                        # informational: which targets it is meant for
+tags: [example]
+requires_tools: false                # true => only runs with --tools / suites with include_tool_skills
+# default_system: optional system prompt template for all cases ({{canary}} is replaced per case)
+references: []
