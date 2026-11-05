@@ -56,9 +56,8 @@ Suites: `default` = 98 cases (text-only), `ci` = 3 per skill (51), `full` = 109,
 
 ## Verification actually performed (2026-11-05)
 
-- `pytest`: **55 passed** on Python 3.13.5 (project `.venv`) and **53 passed** on Python 3.11.18 in a
-  separate venv before the 2 HTTP-stub tests were added; the full 55-test suite was re-run on 3.13
-  after all changes. Covers graders (canary encodings, regex, keywords, exfil, tools, presets,
+- `pytest`: **55 passed** on Python 3.13.5 (project `.venv`) and **55 passed** on Python 3.11.18
+  (separate venv), final code. Covers graders (canary encodings, regex, keywords, exfil, tools, presets,
   judge parsing), payload loader (schema, duplicates, decode round-trips, corpus targets, every
   case renders), mocked SDK clients, real SDK clients against a local 127.0.0.1 stub server, session,
   rate limiter, retries, runner end-to-end, reports and CLI.
