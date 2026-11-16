@@ -1,5 +1,7 @@
 # aisec — AI Security Test Skills for Claude and Hermes
 
+[![CI](https://github.com/spoukidev/ai-sec-test-skills-claude-hermes/actions/workflows/ci.yml/badge.svg)](https://github.com/spoukidev/ai-sec-test-skills-claude-hermes/actions/workflows/ci.yml) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
 A modular, **defensive** toolkit of security test *skills* that measure how well
 **Claude** (Anthropic API) and **Hermes** (Nous Research models via any OpenAI-compatible endpoint —
 OpenRouter, Together, Fireworks, vLLM, or a local Ollama server) resist prompt injection, jailbreaks,
